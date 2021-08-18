@@ -1,0 +1,28 @@
+:root{
+    --blanco:#FFFCF2;
+    --gris:#777574;
+    --gris-oscuro:#403D39;
+    --negro:#252422;
+    --naranja:#EB5E28;
+}
+body{
+    background-color: var(--gris-oscuro);
+    color: var(--blanco);
+}
+.jumbotron{
+    background-color: var(--naranja);
+}
+.navbar{
+    background-color: var(--negro);
+}
+th,td{
+    color: var(--blanco);
+}
+.btn{
+    background-color: var(--gris);
+    border: 1px solid var(--naranja);
+}
+.btn:hover{
+    background-color: var(--naranja);
+    border: 1px solid var(--gris);
+}

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <link rel="stylesheet" href="estilo.css">
+    <title>Mecanico</title>
+  </head>
+  <body onload="cargarCombo()">
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#"><img src="https://img.icons8.com/emoji/38/000000/gear-emoji.png"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Formulario</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="listado.html">Listado</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </section>
+    <section>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4"><b>Formulario</b></h1>
+            </div>
+          </div>
+    </section>
+    <section class="container">
+        <form>
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" id="txtNombre">
+                  </div>
+                  <div class="form-group col-md-6 col-sm-12">
+                    <label>Apellido</label>
+                    <input type="text" class="form-control" id="txtApellido">
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label>Sexo</label>
+                    <select class="form-control" id="cboSexo">
+                        <option disabled selected>Seleccionar...</option>
+                    </select>
+                  </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label>Especialidad</label>
+                    <select class="form-control" id="cboEspecialidad">
+                        <option disabled selected>Seleccionar...</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label>Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="txtFechaNac">
+                  </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label>Zona</label>
+                    <select class="form-control" id="cboZona">
+                        <option disabled selected>Seleccionar...</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="soltero">
+                <label class="form-check-label" for="gridCheck">
+                  Soltero
+                </label>
+              </div>
+              <div class="row">
+                  <div class="col-9 col-md-11"></div>
+                  <div>
+                    <button type="button" class="btn btn-primary" id="btn1">Registrar</button>
+                  </div>
+              </div>
+          </form>
+    </section>
+    <section style="background-color: #777574; margin-top: 5%;">
+        <footer class="page-footer font-small blue pt-4 container">
+          <div class="container-fluid text-center text-md-left">
+            <div class="row">
+              <div class="col-md-6 mt-md-0 mt-3">
+                <h5 class="text-uppercase">Información</h5>
+                <p>Formulario de registro y listado de mecanicos en un taller.</p>
+              </div>
+            </div>
+        </footer>
+      </section>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+
+    <script>
+        function Validar() {
+        if ($("#txtNombre").val() === ""){
+            swal("Ingrese Nombre","Este campo es Obligatorio","error")
+            return false;
+        } 
+        if ($("#txtApellido").val() === ""){
+            swal("Ingrese Apellido","Este campo es Obligatorio","error")
+            return false;
+        }  
+        if ($("#cboSexo").val() === null){
+            swal("Seleccione Sexo","Este campo es Obligatorio","error")
+            return false;
+        } 
+        if ($("#cboEspecialidad").val() === null){
+            swal("Seleccione Especialidad","Este campo es Obligatorio","error")
+            return false;
+        } 
+        if ($("#txtFechaNac").val() === ""){
+            swal("Ingrese Fecha de Nacimiento","Este campo es Obligatorio","error")
+            return false;
+        }  
+        if ($("#cboZona").val() === null){
+            swal("Seleccione Zona","Este campo es Obligatorio","error")
+            return false;
+        }  
+        return true;  
+        }
+
+        function cargarCombo() {
+            $.ajax({
+                url: "https://localhost:5001/Sexo/ObtenerSexo",
+                type: "GET",
+                success: function(result) {
+                    select = document.getElementById("cboSexo");
+                    for (let i = 0; i < result.return.length; i++) {
+                        var option = document.createElement('option');
+                        option.text = result.return[i].sexo1;
+                        select.add(option);
+                    }
+                    console.log(select.value);
+                },
+                error: function(error) {
+                    swal(result.error);
+                }
+            });
+
+            $.ajax({
+                url: "https://localhost:5001/Zona/ObtenerZonas",
+                type: "GET",
+                success: function(result) {
+                    select = document.getElementById("cboZona");
+                    for (let i = 0; i < result.return.length; i++) {
+                        var option = document.createElement('option');
+                        option.text = result.return[i].zona1;
+                        select.add(option);
+                    }
+                    console.log(select.value);
+                },
+                error: function(error) {
+                    swal(result.error);
+                }
+            });
+
+            $.ajax({
+                url: "https://localhost:5001/Especialidad/ObtenerEspecialidad",
+                type: "GET",
+                success: function(result) {
+                    select = document.getElementById("cboEspecialidad");
+                    for (let i = 0; i < result.return.length; i++) {
+                        var option = document.createElement('option');
+                        option.text = result.return[i].especialidad;
+                        select.add(option);
+                    }
+                    console.log(select.value);
+                },
+                error: function(error) {
+                    swal(result.error);
+                }
+            });
+        }
+
+        $("#btn1").click(function() {
+            if (Validar()){
+                swal("Carga Exitosa!","","success")
+                let nombre = $("#txtNombre").val();
+                let apellido = $("#txtApellido").val();
+                let sexo = document.getElementById('cboSexo');
+                let idSexo = sexo.selectedIndex;
+                let especialidad = document.getElementById('cboEspecialidad');
+                let idEspecialidad = especialidad.selectedIndex;
+                let zona = document.getElementById('cboZona');
+                let idZona = zona.selectedIndex;
+                let fechaNac = $("#txtFechaNac").val();
+                let soltero = document.getElementById('soltero');
+                let isSoltero = soltero.checked;
+
+                CargarFormulario(nombre,apellido,idSexo,idEspecialidad,idZona,fechaNac,isSoltero);
+            }
+        })
+
+        function CargarFormulario(nombre,apellido,idSexo,idEspecialidad,idZona,fechaNac,isSoltero) {
+            comando = {
+                "mecanicoId": 0,
+                "nombre": nombre,
+                "apellido": apellido,
+                "sexoId": idSexo,
+                "especialidadId": idEspecialidad,
+                "fechaNacimiento": fechaNac,
+                "zonaId": idZona,
+                "soltero": isSoltero
+            }
+
+            $.ajax({
+                url: "https://localhost:5001/Mecanico/CargarMecanico",
+                dataType:'json',
+                contentType:'application/json',
+                data: JSON.stringify(comando),
+                type: "POST",
+                success: function(result) {
+                    if (result.Ok)
+                        swal("Login Exitoso");
+                },
+                error: function(error) {
+                    swal(result.error);
+                }
+            });
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+</html>
