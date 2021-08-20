@@ -26,3 +26,11 @@ th,td{
     background-color: var(--naranja);
     border: 1px solid var(--gris);
 }
+footer .btn{
+    background-color: red;
+    border: 1px solid var(--blanco);
+    color: var(--blanco);
+    margin: 5%;
+    padding-left: 30%;
+    padding-right: 30%;
+}
